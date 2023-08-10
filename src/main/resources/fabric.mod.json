@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "forgebiomemodifiers",
+  "version": "${version}",
+  "name": "ForgeBiomeModifiers",
+  "description": "Direct port of Forge's Biome Modifiers to Fabric",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/KiltMC/ForgeBiomeModifiers"
+  },
+  "license": "MIT",
+  "icon": "assets/forgebiomemodifiers/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "xyz.bluspring.forgebiomemodifiers.ForgeBiomeModifiers"
+    ]
+  },
+  "mixins": [
+    "forgebiomemodifiers.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "porting_lib": "*"
+  },
+  "accessWidener": "forgebiomemodifiers.accesswidener"
+}

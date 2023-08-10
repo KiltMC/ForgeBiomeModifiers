@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.bluspring.forgebiomemodifiers.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BGSBuilderAccessor",
+    "BiomeGenerationSettingsAccessor",
+    "BiomeMixin",
+    "BSEBuilderAccessor",
+    "ClimateSettingsAccessor",
+    "DedicatedServerMixin",
+    "MobSpawnSettingsAccessor",
+    "MSSBuilderAccessor",
+    "RegistryAccessMixin"
+  ],
+  "client": [
+    "IntegratedServerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
