@@ -15,5 +15,10 @@ public class ForgeBiomeModifiers implements ModInitializer {
             lists.add(new DatapackRegistryInfo<>(BiomeModifiers.BIOME_MODIFIER_KEY, BiomeModifier.DIRECT_CODEC));
             lists.add(new DatapackRegistryInfo<>(StructureModifiers.STRUCTURE_MODIFIER_KEY, StructureModifier.DIRECT_CODEC));
         });
+
+        StructureModifiers.STRUCTURE_MODIFIER_SERIALIZERS.register();
+        StructureModifiers.STRUCTURE_MODIFIERS.register();
+        BiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register();
+        BiomeModifiers.BIOME_MODIFIERS.register();
     }
 }

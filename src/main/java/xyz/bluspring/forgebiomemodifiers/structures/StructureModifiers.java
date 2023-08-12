@@ -23,8 +23,6 @@ public class StructureModifiers {
     public static final Supplier<Registry<Codec<? extends StructureModifier>>> STRUCTURE_MODIFIER_SERIALIZER_REGISTRY = STRUCTURE_MODIFIER_SERIALIZERS.makeRegistry();
 
     public static void runModifiers(MinecraftServer server) {
-        STRUCTURE_MODIFIER_SERIALIZERS.register();
-        STRUCTURE_MODIFIERS.register();
         var registries = server.registryAccess();
 
         var structureModifiers = registries.registryOrThrow(STRUCTURE_MODIFIER_KEY)

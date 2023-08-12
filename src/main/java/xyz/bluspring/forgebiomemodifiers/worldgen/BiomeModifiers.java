@@ -35,9 +35,6 @@ public class BiomeModifiers {
     public static final Supplier<Registry<Codec<? extends BiomeModifier>>> BIOME_MODIFIER_SERIALIZER_REGISTRY = BIOME_MODIFIER_SERIALIZERS.makeRegistry();
 
     public static void runModifiers(MinecraftServer server) {
-        BIOME_MODIFIER_SERIALIZERS.register();
-        BIOME_MODIFIERS.register();
-
         var registries = server.registryAccess();
 
         final List<BiomeModifier> biomeModifiers = registries.registryOrThrow(BIOME_MODIFIER_KEY)
