@@ -17,8 +17,6 @@ public class ForgeBiomeModifiers implements ModInitializer {
         });
 
         StructureModifiers.STRUCTURE_MODIFIER_SERIALIZERS.register();
-        StructureModifiers.STRUCTURE_MODIFIERS.register();
         BiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register();
-        BiomeModifiers.BIOME_MODIFIERS.register();
     }
 }
