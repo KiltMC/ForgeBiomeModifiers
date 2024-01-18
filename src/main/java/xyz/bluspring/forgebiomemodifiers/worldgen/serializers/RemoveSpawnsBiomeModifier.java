@@ -4,7 +4,7 @@ package xyz.bluspring.forgebiomemodifiers.worldgen.serializers;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -40,7 +40,7 @@ public record RemoveSpawnsBiomeModifier(HolderSet<Biome> biomes, HolderSet<Entit
             for (MobCategory category : MobCategory.values())
             {
                 List<MobSpawnSettings.SpawnerData> spawns = spawnBuilder.getSpawner(category);
-                spawns.removeIf(spawnerData -> this.entityTypes.contains(Registry.ENTITY_TYPE.getHolder(Registry.ENTITY_TYPE.getResourceKey(spawnerData.type).get()).get()));
+                spawns.removeIf(spawnerData -> this.entityTypes.contains(BuiltInRegistries.ENTITY_TYPE.getHolder(BuiltInRegistries.ENTITY_TYPE.getResourceKey(spawnerData.type).get()).get()));
             }
         }
     }

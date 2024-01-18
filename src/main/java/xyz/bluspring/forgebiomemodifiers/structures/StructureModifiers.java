@@ -5,6 +5,7 @@ import io.github.fabricators_of_create.porting_lib.util.LazyRegistrar;
 import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -30,7 +31,7 @@ public class StructureModifiers {
                 .map(Holder::value)
                 .toList();
 
-        registries.registryOrThrow(Registry.STRUCTURE_REGISTRY).holders().forEach((structureHolder) -> {
+        registries.registryOrThrow(Registries.STRUCTURE).holders().forEach((structureHolder) -> {
             ((ModifiableStructureExtension) structureHolder.value()).modifiableStructureInfo().applyStructureModifiers(structureHolder, structureModifiers);
         });
     }

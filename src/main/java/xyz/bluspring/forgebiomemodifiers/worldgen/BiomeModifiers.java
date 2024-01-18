@@ -8,6 +8,7 @@ import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -28,7 +29,6 @@ import java.util.function.Supplier;
 public class BiomeModifiers {
     public static final ResourceKey<Registry<BiomeModifier>> BIOME_MODIFIER_KEY = ResourceKey.createRegistryKey(new ResourceLocation("forge", "forge/biome_modifier"));
     public static final LazyRegistrar<BiomeModifier> BIOME_MODIFIERS = LazyRegistrar.create(BIOME_MODIFIER_KEY, "forge");
-    public static final Supplier<Registry<BiomeModifier>> BIOME_MODIFIER_REGISTRY = BIOME_MODIFIERS.makeRegistry();
 
     public static final ResourceKey<Registry<Codec<? extends BiomeModifier>>> BIOME_MODIFIER_SERIALIZER_KEY = ResourceKey.createRegistryKey(new ResourceLocation("forge", "forge/biome_modifier_serializers"));
     public static final LazyRegistrar<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = LazyRegistrar.create(BIOME_MODIFIER_SERIALIZER_KEY, "forge");
@@ -42,7 +42,7 @@ public class BiomeModifiers {
                 .map(Holder::value)
                 .toList();
 
-        registries.registryOrThrow(Registry.BIOME_REGISTRY).holders().forEach(biomeHolder ->
+        registries.registryOrThrow(Registries.BIOME).holders().forEach(biomeHolder ->
         {
             ((ModifiableBiomeExtension) (Object) biomeHolder.value()).modifiableBiomeInfo().applyBiomeModifiers(biomeHolder, biomeModifiers);
         });
@@ -99,7 +99,7 @@ public class BiomeModifiers {
     public static final RegistryObject<Codec<RemoveSpawnsBiomeModifier>> REMOVE_SPAWNS_BIOME_MODIFIER_TYPE = BIOME_MODIFIER_SERIALIZERS.register("remove_spawns", () ->
             RecordCodecBuilder.create(builder -> builder.group(
                     Biome.LIST_CODEC.fieldOf("biomes").forGetter(RemoveSpawnsBiomeModifier::biomes),
-                    RegistryCodecs.homogeneousList(Registry.ENTITY_TYPE_REGISTRY).fieldOf("entity_types").forGetter(RemoveSpawnsBiomeModifier::entityTypes)
+                    RegistryCodecs.homogeneousList(Registries.ENTITY_TYPE).fieldOf("entity_types").forGetter(RemoveSpawnsBiomeModifier::entityTypes)
             ).apply(builder, RemoveSpawnsBiomeModifier::new))
     );
 }

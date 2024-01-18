@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 import java.util.List;
 import java.util.Map;
 
-@Mixin(BiomeGenerationSettings.Builder.class)
+@Mixin(BiomeGenerationSettings.PlainBuilder.class)
 public interface BGSBuilderAccessor {
     @Accessor
     Map<GenerationStep.Carving, List<Holder<ConfiguredWorldCarver<?>>>> getCarvers();

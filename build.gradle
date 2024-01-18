@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.4-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -52,7 +52,7 @@ dependencies {
 
         // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modApi("io.github.fabricators_of_create.Porting-Lib:porting-lib:2.1.875+1.19.2")
+    modApi("io.github.fabricators_of_create.Porting-Lib:Porting-Lib:2.1.1178+1.20.1")
 }
 
 processResources {

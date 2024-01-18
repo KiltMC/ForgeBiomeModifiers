@@ -2,7 +2,6 @@ package xyz.bluspring.forgebiomemodifiers.worldgen;
 
 
 import net.minecraft.world.level.biome.Biome.ClimateSettings;
-import net.minecraft.world.level.biome.Biome.Precipitation;
 import net.minecraft.world.level.biome.Biome.TemperatureModifier;
 import xyz.bluspring.forgebiomemodifiers.mixin.ClimateSettingsAccessor;
 
@@ -11,7 +10,7 @@ import xyz.bluspring.forgebiomemodifiers.mixin.ClimateSettingsAccessor;
  */
 public class ClimateSettingsBuilder
 {
-    private Precipitation precipitation;
+    private boolean hasPrecipitation;
     private float temperature;
     private TemperatureModifier temperatureModifier;
     private float downfall;
@@ -22,7 +21,7 @@ public class ClimateSettingsBuilder
      */
     public static ClimateSettingsBuilder copyOf(ClimateSettings settings)
     {
-        return create(settings.precipitation(), settings.temperature(), settings.temperatureModifier(), settings.downfall());
+        return create(settings.hasPrecipitation(), settings.temperature(), settings.temperatureModifier(), settings.downfall());
     }
 
     /**
@@ -35,14 +34,14 @@ public class ClimateSettingsBuilder
      * Biomes with downfall > 0.85 count as humid, inhibiting fire spread.
      * @return a new builder with the given values
      */
-    public static ClimateSettingsBuilder create(Precipitation precipitation, float temperature, TemperatureModifier temperatureModifier, float downfall)
+    public static ClimateSettingsBuilder create(boolean precipitation, float temperature, TemperatureModifier temperatureModifier, float downfall)
     {
         return new ClimateSettingsBuilder(precipitation, temperature, temperatureModifier, downfall);
     }
 
-    private ClimateSettingsBuilder(Precipitation precipitation, float temperature, TemperatureModifier temperatureModifier, float downfall)
+    private ClimateSettingsBuilder(boolean hasPrecipitation, float temperature, TemperatureModifier temperatureModifier, float downfall)
     {
-        this.precipitation = precipitation;
+        this.hasPrecipitation = hasPrecipitation;
         this.temperature = temperature;
         this.temperatureModifier = temperatureModifier;
         this.downfall = downfall;
@@ -53,23 +52,23 @@ public class ClimateSettingsBuilder
      */
     public ClimateSettings build()
     {
-        return ClimateSettingsAccessor.createClimateSettings(this.precipitation, this.temperature, this.temperatureModifier, this.downfall);
+        return ClimateSettingsAccessor.createClimateSettings(this.hasPrecipitation, this.temperature, this.temperatureModifier, this.downfall);
     }
 
     /**
      * @return Synced to clients, determines weather effects.
      */
-    public Precipitation getPrecipitation()
+    public boolean getPrecipitation()
     {
-        return precipitation;
+        return hasPrecipitation;
     }
 
     /**
-     * @param precipitation Synced to clients, determines weather effects.
+     * @param hasPrecipitation Synced to clients, determines weather effects.
      */
-    public void setPrecipitation(Precipitation precipitation)
+    public void setPrecipitation(boolean hasPrecipitation)
     {
-        this.precipitation = precipitation;
+        this.hasPrecipitation = hasPrecipitation;
     }
 
     /**

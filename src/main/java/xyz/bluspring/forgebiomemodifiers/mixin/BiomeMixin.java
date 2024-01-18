@@ -5,6 +5,7 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -14,6 +15,7 @@ import xyz.bluspring.forgebiomemodifiers.worldgen.ModifiableBiomeInfo;
 
 @Mixin(Biome.class)
 public class BiomeMixin implements ModifiableBiomeExtension {
+    @Unique
     private ModifiableBiomeInfo modifiableBiomeInfo;
 
     @Inject(method = "<init>", at = @At("TAIL"))

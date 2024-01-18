@@ -12,7 +12,7 @@ import xyz.bluspring.forgebiomemodifiers.mixin.BiomeGenerationSettingsAccessor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BiomeGenerationSettingsBuilder extends BiomeGenerationSettings.Builder
+public class BiomeGenerationSettingsBuilder extends BiomeGenerationSettings.PlainBuilder
 {
     public BiomeGenerationSettingsBuilder(BiomeGenerationSettings orig)
     {

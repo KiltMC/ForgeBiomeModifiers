@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(Biome.ClimateSettings.class)
 public interface ClimateSettingsAccessor {
     @Invoker("<init>")
-    static Biome.ClimateSettings createClimateSettings(Biome.Precipitation precipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall) {
+    static Biome.ClimateSettings createClimateSettings(boolean hasPrecipitation, float temperature, Biome.TemperatureModifier temperatureModifier, float downfall) {
         throw new UnsupportedOperationException();
     }
 }
