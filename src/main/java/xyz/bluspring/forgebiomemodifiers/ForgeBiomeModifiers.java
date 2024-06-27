@@ -15,6 +15,7 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import xyz.bluspring.forgebiomemodifiers.holdersets.HolderSets;
 import xyz.bluspring.forgebiomemodifiers.mixin.BiomeAccessor;
 import xyz.bluspring.forgebiomemodifiers.mixin.BiomeSelectionContextImplAccessor;
 import xyz.bluspring.forgebiomemodifiers.mixin.MobSpawnSettingsAccessor;
@@ -31,6 +32,8 @@ public class ForgeBiomeModifiers implements ModInitializer {
             registry.register(new RegistryDataLoader.RegistryData<>(BiomeModifiers.BIOME_MODIFIER_KEY, BiomeModifier.DIRECT_CODEC));
             registry.register(new RegistryDataLoader.RegistryData<>(StructureModifiers.STRUCTURE_MODIFIER_KEY, StructureModifier.DIRECT_CODEC));
         });
+
+        HolderSets.HOLDER_SET_TYPES.register();
 
         BiomeModifications.create(new ResourceLocation("forge_biome_modifier", "biome_modifier"))
             .add(ModificationPhase.ADDITIONS, BiomeSelectors.all(), (selection, modification) -> {

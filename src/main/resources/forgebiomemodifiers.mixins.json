@@ -12,11 +12,13 @@
         "BSEBuilderAccessor",
         "ClimateSettingsAccessor",
         "DedicatedServerMixin",
+        "HolderSetCodecMixin",
         "MobSpawnSettingsAccessor",
         "MSSBuilderAccessor",
         "NewDatapackRegistryMixin",
         "RegistryDataLoaderAccessor",
         "RegistryDataLoaderMixin",
+        "RegistryOpsAccessor",
         "StructureMixin",
         "WorldLoaderMixin"
     ],
