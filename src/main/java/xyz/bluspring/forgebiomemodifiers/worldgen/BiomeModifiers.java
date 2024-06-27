@@ -28,7 +28,7 @@ import java.util.function.Supplier;
 
 public class BiomeModifiers {
     public static final ResourceKey<Registry<BiomeModifier>> BIOME_MODIFIER_KEY = ResourceKey.createRegistryKey(new ResourceLocation("forge", "forge/biome_modifier"));
-    public static final LazyRegistrar<BiomeModifier> BIOME_MODIFIERS = LazyRegistrar.create(BIOME_MODIFIER_KEY, "forge");
+    //public static final LazyRegistrar<BiomeModifier> BIOME_MODIFIERS = LazyRegistrar.create(BIOME_MODIFIER_KEY, "forge");
 
     public static final ResourceKey<Registry<Codec<? extends BiomeModifier>>> BIOME_MODIFIER_SERIALIZER_KEY = ResourceKey.createRegistryKey(new ResourceLocation("forge", "forge/biome_modifier_serializers"));
     public static final LazyRegistrar<Codec<? extends BiomeModifier>> BIOME_MODIFIER_SERIALIZERS = LazyRegistrar.create(BIOME_MODIFIER_SERIALIZER_KEY, "forge");

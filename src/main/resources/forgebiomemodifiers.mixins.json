@@ -12,7 +12,7 @@
     "DedicatedServerMixin",
     "MobSpawnSettingsAccessor",
     "MSSBuilderAccessor",
-    "RegistryAccessMixin",
+    "RegistryDataLoaderAccessor",
     "StructureMixin"
   ],
   "client": [

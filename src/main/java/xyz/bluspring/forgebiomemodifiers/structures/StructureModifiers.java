@@ -16,8 +16,6 @@ import java.util.function.Supplier;
 
 public class StructureModifiers {
     public static final ResourceKey<Registry<StructureModifier>> STRUCTURE_MODIFIER_KEY = ResourceKey.createRegistryKey(new ResourceLocation("forge", "forge/structure_modifier"));
-    public static final LazyRegistrar<StructureModifier> STRUCTURE_MODIFIERS = LazyRegistrar.create(STRUCTURE_MODIFIER_KEY, "forge");
-    public static final Supplier<Registry<StructureModifier>> STRUCTURE_MODIFIER_REGISTRY = STRUCTURE_MODIFIERS.makeRegistry();
 
     public static final ResourceKey<Registry<Codec<? extends StructureModifier>>> STRUCTURE_MODIFIER_SERIALIZER_KEY = ResourceKey.createRegistryKey(new ResourceLocation("forge", "forge/structure_modifier_serializers"));
     public static final LazyRegistrar<Codec<? extends StructureModifier>> STRUCTURE_MODIFIER_SERIALIZERS = LazyRegistrar.create(STRUCTURE_MODIFIER_SERIALIZER_KEY, "forge");
