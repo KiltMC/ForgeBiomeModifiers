@@ -24,8 +24,6 @@ import xyz.bluspring.forgebiomemodifiers.worldgen.BiomeModifier;
 import xyz.bluspring.forgebiomemodifiers.worldgen.BiomeModifiers;
 import xyz.bluspring.forgebiomemodifiers.worldgen.ModifiableBiomeInfo;
 
-import java.util.List;
-
 public class ForgeBiomeModifiers implements ModInitializer {
     @Override
     public void onInitialize() {
@@ -42,11 +40,11 @@ public class ForgeBiomeModifiers implements ModInitializer {
                 // carvers
                 for (GenerationStep.Carving value : GenerationStep.Carving.values()) {
                     var carvers = info.generationSettings().getCarvers(value);
-                    var original = (List<Holder<ConfiguredWorldCarver<?>>>) biome.getGenerationSettings().getCarvers(value);
+                    var original = biome.getGenerationSettings().getCarvers(value);
 
                     for (Holder<ConfiguredWorldCarver<?>> carver : carvers) {
                         var key = carver.unwrapKey().orElseThrow();
-                        if (original.stream().anyMatch(e -> e.is(key)))
+                        if (original instanceof HolderSet<ConfiguredWorldCarver<?>> holderSet && holderSet.stream().anyMatch(e -> e.is(key)))
                             continue;
 
                         modification.getGenerationSettings().addCarver(value, key);
