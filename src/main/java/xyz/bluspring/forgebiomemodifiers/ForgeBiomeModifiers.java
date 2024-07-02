@@ -1,6 +1,5 @@
 package xyz.bluspring.forgebiomemodifiers;
 
-import io.github.fabricators_of_create.porting_lib.registries.RegistryEvents;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
@@ -8,7 +7,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.resources.RegistryDataLoader;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -19,7 +17,6 @@ import xyz.bluspring.forgebiomemodifiers.holdersets.HolderSets;
 import xyz.bluspring.forgebiomemodifiers.mixin.BiomeAccessor;
 import xyz.bluspring.forgebiomemodifiers.mixin.BiomeSelectionContextImplAccessor;
 import xyz.bluspring.forgebiomemodifiers.mixin.MobSpawnSettingsAccessor;
-import xyz.bluspring.forgebiomemodifiers.structures.StructureModifier;
 import xyz.bluspring.forgebiomemodifiers.structures.StructureModifiers;
 import xyz.bluspring.forgebiomemodifiers.worldgen.BiomeModifier;
 import xyz.bluspring.forgebiomemodifiers.worldgen.BiomeModifiers;
@@ -28,11 +25,6 @@ import xyz.bluspring.forgebiomemodifiers.worldgen.ModifiableBiomeInfo;
 public class ForgeBiomeModifiers implements ModInitializer {
     @Override
     public void onInitialize() {
-        RegistryEvents.NEW_DATAPACK_REGISTRY.register(registry -> {
-            registry.register(new RegistryDataLoader.RegistryData<>(BiomeModifiers.BIOME_MODIFIER_KEY, BiomeModifier.DIRECT_CODEC));
-            registry.register(new RegistryDataLoader.RegistryData<>(StructureModifiers.STRUCTURE_MODIFIER_KEY, StructureModifier.DIRECT_CODEC));
-        });
-
         HolderSets.HOLDER_SET_TYPES.register();
 
         BiomeModifications.create(new ResourceLocation("forge_biome_modifier", "biome_modifier"))
